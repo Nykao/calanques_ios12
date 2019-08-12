@@ -8,6 +8,8 @@
 
 import UIKit
 
+let segueID = "Detail"
+
 class TableViewControllerIntegreeController: UITableViewController {
     
     var calanques: [Calanque] = []
@@ -55,6 +57,16 @@ class TableViewControllerIntegreeController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 175
     }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: segueID, sender: calanques[indexPath.row])
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == segueID{
+            if let vc = segue.destination as? DetailControllerViewController{
+                vc.calanqueRecue = sender as? Calanque
+            }
+        }
+    }
     
 
     /*
@@ -65,17 +77,25 @@ class TableViewControllerIntegreeController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            calanques.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
         } else if editingStyle == .insert {
+            print("ajouter un element?")
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
+    @IBAction func reloadAction(_ sender: Any) {
+        calanques = CalanqueCollection().all()
+        tableView.reloadData()
+    }
+    
+    
 
     /*
     // Override to support rearranging the table view.
