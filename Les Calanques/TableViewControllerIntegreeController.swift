@@ -11,12 +11,16 @@ import UIKit
 class TableViewControllerIntegreeController: UITableViewController {
     
     var calanques: [Calanque] = []
+    var cellId = "CalanqueCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
         calanques = CalanqueCollection().all()
-
-     
+        tableView.backgroundColor = UIColor.clear
+        let bgImage = UIImageView(frame: view.bounds)
+        bgImage.image = calanques[0].image
+        bgImage.contentMode = .scaleAspectFill
+        tableView.backgroundView = bgImage
     }
 
     // MARK: - Table view data source
@@ -33,15 +37,23 @@ class TableViewControllerIntegreeController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        let calanque = calanques[indexPath.row]
-        cell.textLabel?.text = calanque.nom
-        cell.imageView?.image = calanque.image
-        return cell
+        // Si a la creation de la cell, l'identifier n'exits epas, on bascule sur "else" et on // créé une autre cell par defaut.
+        //De cette maniere, pas besoin d'avoir a jouer avec les optionnels puisque l'on sera sur // que cell sera créé.
+        if let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as? CalanqueCell {
+            cell.setupCell(calanques[indexPath.row])
+            return cell
+        }else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+            let calanque = calanques[indexPath.row]
+            cell.textLabel?.text = calanque.nom
+            cell.imageView?.image = calanque.image
+            return cell
+        }
+        
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return 175
     }
     
 
