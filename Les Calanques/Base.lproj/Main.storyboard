@@ -142,7 +142,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <navigationItem key="navigationItem" id="0m4-NW-6W3"/>
+                    <navigationItem key="navigationItem" id="0m4-NW-6W3">
+                        <barButtonItem key="rightBarButtonItem" title="Reload" id="Zg3-Dw-Dyi">
+                            <connections>
+                                <action selector="reloadAction:" destination="9pv-A4-QxB" id="qCH-ed-64e"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Hjn-gm-jR1" id="QBL-yG-FA4"/>
                         <segue destination="aU6-Sf-7y0" kind="show" identifier="Detail" id="KsI-Ca-cbJ"/>
@@ -383,6 +389,6 @@
         <image name="port pin" width="1024" height="684"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="8by-P2-p8k"/>
+        <segue reference="KsI-Ca-cbJ"/>
     </inferredMetricsTieBreakers>
 </document>

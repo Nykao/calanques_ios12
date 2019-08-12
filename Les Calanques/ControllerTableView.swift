@@ -49,7 +49,24 @@ class ControllerTableView: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
-
+    // Override to support editing the table view.
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            calanques.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+        } else if editingStyle == .insert {
+            print("ajouter un element?")
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+    }
+    
+    @IBAction func reloadAction(_ sender: Any) {
+        calanques = CalanqueCollection().all()
+        tableView.reloadData()
+    }
+    
+    
     /*
     // MARK: - Navigation
 
