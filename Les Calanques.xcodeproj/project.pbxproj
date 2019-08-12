@@ -56,15 +56,39 @@
 		831623C4230154E6003B9D12 /* Les Calanques */ = {
 			isa = PBXGroup;
 			children = (
+				831623D923016006003B9D12 /* Modele */,
+				831623DA23016033003B9D12 /* Vue */,
+				831623DB2301604B003B9D12 /* Controller */,
 				831623C5230154E6003B9D12 /* AppDelegate.swift */,
-				831623C7230154E6003B9D12 /* FirstViewController.swift */,
-				831623C9230154E6003B9D12 /* SecondViewController.swift */,
 				831623CB230154E6003B9D12 /* Main.storyboard */,
 				831623CE230154E7003B9D12 /* Assets.xcassets */,
 				831623D0230154E7003B9D12 /* LaunchScreen.storyboard */,
 				831623D3230154E7003B9D12 /* Info.plist */,
 			);
 			path = "Les Calanques";
+			sourceTree = "<group>";
+		};
+		831623D923016006003B9D12 /* Modele */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Modele;
+			sourceTree = "<group>";
+		};
+		831623DA23016033003B9D12 /* Vue */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Vue;
+			sourceTree = "<group>";
+		};
+		831623DB2301604B003B9D12 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				831623C7230154E6003B9D12 /* FirstViewController.swift */,
+				831623C9230154E6003B9D12 /* SecondViewController.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
